@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const Profile = [
@@ -43,20 +44,31 @@ function Home() {
     },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <div>
       <div>
         {Profile.map((p, index) => (
-          <div className="my-5" key={index} style={{ display: "flex" }}>
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              margin: "1rem",
+              backgroundColor: "#2B2D42",
+              color: "white",
+            }}
+            onClick={() => navigate(`/detail/${p.id}`)}
+          >
             <img
               src={p.image}
               alt="foto"
-              width="100px"
-              height="100px"
+              width="110px"
+              height="110px"
               style={{ objectFit: "cover", borderRadius: "50%" }}
             />
             <div>
-              <h3>{p.username}</h3>
+              <h3>@{p.username}</h3>
               <h3>Followers : {p.follower}</h3>
             </div>
           </div>
